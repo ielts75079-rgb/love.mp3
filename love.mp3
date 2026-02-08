@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine’s Day ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body{
+  height:100vh;
+  background: linear-gradient(135deg,#ff4e50,#ff758c,#f9d423);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  overflow:hidden;
+}
+
+.card{
+  background: rgba(0,0,0,0.35);
+  padding:40px 30px;
+  border-radius:20px;
+  max-width:360px;
+  animation: fadeIn 2s ease;
+}
+
+h1{
+  font-size:2.3rem;
+  margin-bottom:15px;
+}
+
+p{
+  font-size:1.1rem;
+  margin-bottom:15px;
+  line-height:1.6;
+}
+
+button{
+  padding:12px 26px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#ff4e50;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#ffe1e1;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+.overlay button{
+  font-size:1.2rem;
+  padding:16px 35px;
+}
+
+.heart{
+  position:absolute;
+  bottom:-10vh;
+  color:rgba(255,255,255,0.7);
+  animation: float 6s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(0);}
+  to{transform:translateY(-120vh);}
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:scale(0.9);}
+  to{opacity:1; transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="bgMusic" loop>
+  <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Tap overlay -->
+<div class="overlay" id="overlay">
+  <button onclick="startExperience()">Tap to start ❤️</button>
+</div>
+
+<div class="card">
+  <h1>Happy Valentine’s Day ❤️</h1>
+
+  <p>
+    I don’t believe in perfect moments,<br>
+    I believe in real feelings.
+  </p>
+
+  <p>
+    You came into my life quietly,<br>
+    and became the loudest part of my heart.
+  </p>
+
+  <button onclick="showLove()">Tap me 🌹</button>
+</div>
+
+<script>
+let musicStarted = false;
+
+function startExperience(){
+  const music = document.getElementById("bgMusic");
+  music.play().catch(()=>{});
+  document.getElementById("overlay").style.display="none";
+  musicStarted = true;
+}
+
+function showLove(){
+  if(!musicStarted){
+    startExperience();
+  }
+  alert("Will you always stay with me? ❤️");
+}
+
+// floating hearts
+for(let i=0;i<25;i++){
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (Math.random()*20 + 15) + "px";
+  heart.style.animationDuration = (Math.random()*3 + 4) + "s";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
